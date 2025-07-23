@@ -1,0 +1,376 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 04, 2025 at 11:46 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `wavelineapparel`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admID` varchar(30) NOT NULL,
+  `admName` varchar(100) NOT NULL,
+  `admPhoneNum` varchar(12) NOT NULL,
+  `admAddress` varchar(200) NOT NULL,
+  `admPin` varchar(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admID`, `admName`, `admPhoneNum`, `admAddress`, `admPin`) VALUES
+('ADM001', 'Sarah Johnson', '0123456789', '123 Admin Street, Kuala Lumpur', '1234'),
+('ADM002', 'Michael Chen', '0112345678', '456 Management Avenue, Penang', '1234'),
+('ADM003', 'Aisha Rahman', '0198765432', '789 Executive Road, Johor Bahru', '1234');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `custID` varchar(30) NOT NULL,
+  `prodID` varchar(30) NOT NULL,
+  `cartQuantity` int(255) NOT NULL,
+  `cartPrice` decimal(20,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`custID`, `prodID`, `cartQuantity`, `cartPrice`) VALUES
+('CUST001', 'P13', 2, 15.00),
+('CUST001', 'P1', 1, 40.00),
+('CUST002', 'P16', 1, 60.00),
+('CUST003', 'P4', 3, 30.00),
+('CUST004', 'P8', 1, 60.00),
+('CUST005', 'P11', 2, 20.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `custID` varchar(30) NOT NULL,
+  `custName` varchar(100) NOT NULL,
+  `custAge` int(11) NOT NULL,
+  `custGender` char(1) NOT NULL,
+  `custAddress` varchar(200) NOT NULL,
+  `custPhoneNumber` varchar(12) NOT NULL,
+  `custPassword` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`custID`, `custName`, `custAge`, `custGender`, `custAddress`, `custPhoneNumber`, `custPassword`) VALUES
+('CUST001', 'Emma Watson', 28, 'F', '101 Beach View, Penang', '0123456789', 'emma1234'),
+('CUST002', 'James Lee', 35, 'M', '202 Hillside Apartment, KL', '0112233445', 'james567'),
+('CUST003', 'Sophia Tan', 22, 'F', '303 Garden Residence, Johor', '0198877665', 'sophia88'),
+('CUST004', 'Daniel Wong', 40, 'M', '404 Lakeview Condo, Penang', '0167788990', 'daniel12'),
+('CUST005', 'Olivia Ng', 31, 'F', '505 City Center, KL', '0176655443', 'olivia31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `empID` varchar(30) NOT NULL,
+  `empName` varchar(100) NOT NULL,
+  `empPhoneNum` varchar(12) NOT NULL,
+  `empJobTitle` char(1) NOT NULL,
+  `empPassword` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`empID`, `empName`, `empPhoneNum`, `empJobTitle`, `empPassword`) VALUES
+('EMP001', 'David Lim', '0133344556', 'M', 'david123'),
+('EMP002', 'Nurul Hassan', '0144455667', 'S', 'nurul456'),
+('EMP003', 'Jason Raj', '0155566778', 'C', 'jason789'),
+('EMP004', 'Mei Ling', '0166677889', 'W', 'meiling1'),
+('EMP005', 'Ali Abdullah', '0177788990', 'D', 'ali12345');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `fbID` varchar(30) NOT NULL,
+  `fbDate` date NOT NULL,
+  `fbRating` varchar(300) NOT NULL,
+  `fbComment` varchar(300) NOT NULL,
+  `custID` varchar(30) NOT NULL,
+  `orderID` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`fbID`, `fbDate`, `fbRating`, `fbComment`, `custID`, `orderID`) VALUES
+('FB001', '2025-06-17', '5', 'Excellent quality and perfect fit!', 'CUST001', 'ORD001'),
+('FB002', '2025-06-19', '4', 'Very comfortable but color slightly different from picture', 'CUST002', 'ORD002'),
+('FB003', '2025-06-21', '5', 'My daughter loves this set!', 'CUST003', 'ORD003'),
+('FB004', '2025-06-23', '3', 'Material is good but stitching could be better', 'CUST004', 'ORD004'),
+('FB006', '2025-06-17', '5', 'NICE', 'CUST005', 'ORD006');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice`
+--
+
+CREATE TABLE `invoice` (
+  `invID` varchar(30) NOT NULL,
+  `invDate` date NOT NULL,
+  `invPaymentMethod` varchar(30) NOT NULL,
+  `invTotal` decimal(20,2) NOT NULL,
+  `orderID` varchar(30) NOT NULL,
+  `custID` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `invoice`
+--
+
+INSERT INTO `invoice` (`invID`, `invDate`, `invPaymentMethod`, `invTotal`, `orderID`, `custID`) VALUES
+('INV001', '2025-06-15', 'Maybank2u', 75.00, 'ORD001', 'CUST001'),
+('INV002', '2025-06-18', 'CIMB Clicks', 65.00, 'ORD002', 'CUST002'),
+('INV003', '2025-06-20', 'RHB Now', 97.00, 'ORD003', 'CUST003'),
+('INV004', '2025-06-22', 'Public Bank', 65.00, 'ORD004', 'CUST004'),
+('INV005', '2025-06-25', 'Hong Leong Connect', 45.00, 'ORD005', 'CUST005'),
+('INV006', '2025-06-16', 'Ambank', 65.00, 'ORD006', 'CUST005');
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `orderID` varchar(30) NOT NULL,
+  `orderDate` date NOT NULL,
+  `orderShippingFee` decimal(20,2) NOT NULL,
+  `custID` varchar(30) NOT NULL,
+  `orderSubtotal` decimal(20,2) NOT NULL,
+  `orderStatus` char(1) NOT NULL COMMENT 'P=Processing, C=Completed, X=Cancelled'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`orderID`, `orderDate`, `orderShippingFee`, `custID`, `orderSubtotal`, `orderStatus`) VALUES
+('ORD001', '2025-06-15', 5.00, 'CUST001', 70.00, 'C'),
+('ORD002', '2025-06-18', 5.00, 'CUST002', 60.00, 'C'),
+('ORD003', '2025-06-20', 7.00, 'CUST003', 90.00, 'P'),
+('ORD004', '2025-06-22', 5.00, 'CUST004', 60.00, 'P'),
+('ORD005', '2025-06-25', 5.00, 'CUST005', 40.00, 'P'),
+('ORD006', '2025-06-16', 5.00, 'CUST005', 60.00, 'C');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_detail`
+--
+
+CREATE TABLE `order_detail` (
+  `order_detailID` varchar(30) NOT NULL,
+  `orderID` varchar(30) NOT NULL,
+  `order_detailQuantity` int(200) NOT NULL,
+  `order_detailPrice` decimal(20,2) NOT NULL,
+  `prodID` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`order_detailID`, `orderID`, `order_detailQuantity`, `order_detailPrice`, `prodID`) VALUES
+('OD001001', 'ORD001', 2, 15.00, 'P13'),
+('OD001002', 'ORD001', 1, 40.00, 'P1'),
+('OD002001', 'ORD002', 1, 60.00, 'P16'),
+('OD003001', 'ORD003', 3, 30.00, 'P4'),
+('OD004001', 'ORD004', 1, 60.00, 'P8'),
+('OD005001', 'ORD005', 2, 20.00, 'P11'),
+('OD006001', 'ORD006', 1, 60.00, 'P8');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `prodID` varchar(30) NOT NULL,
+  `prodName` varchar(200) NOT NULL,
+  `prodPrice` decimal(20,2) NOT NULL,
+  `prodCategory` char(1) NOT NULL COMMENT 'A=Accessories, F=Women, M=Men, K=Kids, U=Unisex',
+  `prodStatus` char(1) NOT NULL COMMENT 'A=Active, I=Inactive',
+  `prodStock` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`prodID`, `prodName`, `prodPrice`, `prodCategory`, `prodStatus`, `prodStock`) VALUES
+('P1', 'Ocean Vibe Tee', 40.00, 'M', 'I', 100),
+('P2', 'Urban Tee', 40.00, 'M', 'I', 100),
+('P3', 'Flex Fit Pants', 55.00, 'M', 'I', 100),
+('P4', 'Chic Cut Shirt', 30.00, 'F', 'I', 100),
+('P5', 'Elegance Long Shirt', 40.00, 'F', 'I', 100),
+('P6', 'Breezy Sleeveless Top', 30.00, 'F', 'I', 100),
+('P7', 'Women\'s Power Pants', 30.00, 'F', 'I', 100),
+('P8', 'Lil\' Miss Style Set', 60.00, 'K', 'I', 100),
+('P9', 'Lil\' Champ Outfit', 60.00, 'K', 'I', 100),
+('P10', 'Cozy Knit Ankle Socks', 15.00, 'A', 'I', 100),
+('P11', 'Sleek Shades Sunglasses', 20.00, 'A', 'I', 100),
+('P12', 'Vibe Band Stretch Headband', 20.00, 'A', 'I', 100),
+('P13', 'Snap Style Cap', 15.00, 'A', 'I', 100),
+('P14', 'Chill Brim Sun Hat', 20.00, 'A', 'I', 100),
+('P15', 'Core Sweat Unisex Sweater', 60.00, 'U', 'I', 100),
+('P16', 'Street Heat Unisex Hoodie', 60.00, 'U', 'I', 100);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admID`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`custID`,`prodID`),
+  ADD KEY `prodID` (`prodID`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`custID`);
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`empID`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`fbID`),
+  ADD KEY `custID` (`custID`),
+  ADD KEY `orderID` (`orderID`);
+
+--
+-- Indexes for table `invoice`
+--
+ALTER TABLE `invoice`
+  ADD PRIMARY KEY (`invID`),
+  ADD KEY `orderID` (`orderID`),
+  ADD KEY `custID` (`custID`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderID`),
+  ADD KEY `custID` (`custID`);
+
+--
+-- Indexes for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD PRIMARY KEY (`order_detailID`),
+  ADD KEY `prodID` (`prodID`),
+  ADD KEY `orderID` (`orderID`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`prodID`),
+  ADD KEY `prodCategory` (`prodCategory`),
+  ADD KEY `prodStatus` (`prodStatus`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`prodID`) REFERENCES `product` (`prodID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `invoice`
+--
+ALTER TABLE `invoice`
+  ADD CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `invoice_ibfk_2` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`prodID`) REFERENCES `product` (`prodID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

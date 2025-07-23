@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Frequently Asked Questions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <style>
+        .faq-container {
+            padding: 120px 0 80px;
+            max-width: 800px;
+            /* Added to constrain overall width */
+            margin: 0 auto;
+            /* Center the container */
+        }
+
+        .faq-category {
+            margin-bottom: 27px !important;
+            border-radius: 9px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            /* Reduced width */
+            margin: auto;
+            /* Center the category boxes */
+
+        }
+
+        .category-title {
+            padding: 40px 25px;
+            /* Increased vertical padding */
+            background-color: #2a2a2a;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            min-height: 100px;
+            /* Added minimum height */
+        }
+
+        .category-title:hover {
+            background-color: #818fdd;
+        }
+
+        .category-title::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        .category-title.active::after {
+            content: '-';
+        }
+
+        .questions-list {
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .question {
+            padding: 20px 25px;
+            /* Increased vertical padding */
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            min-height: 70px;
+            /* Added minimum height */
+            display: flex;
+            align-items: center;
+        }
+
+        .question:hover {
+            background-color: #f5f5f5;
+        }
+
+        .answer {
+            padding: 30px 30px;
+            /* Increased padding */
+            background-color: #f8f8f8;
+            display: none;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            border-left: 4px solid #717fe0;
+            margin: 0 15px 15px 15px;
+            border-radius: 0 0 5px 5px;
+            width: calc(100% - 60px);
+        }
+
+        .answer.show {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-header h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bolder;
+        }
+
+        .answer ul {
+            list-style-type: disc !important;
+            margin-left: 20px !important;
+            padding-left: 0 !important;
+        }
+
+        .answer ol {
+            list-style-type: decimal !important;
+            margin-left: 20px !important;
+            padding-left: 0 !important;
+        }
+
+        .answer li {
+            display: list-item !important;
+        }
+    </style>
+</head>
+
+<body class="animsition">
+
+    <!-- Header -->
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop">
+            <!-- Topbar -->
+            <div class="top-bar">
+                <div class="content-topbar flex-sb-m h-full container">
+
+                    <div class="left-top-bar flex-w h-full">
+                        <a href="faq.html" class="flex-c-m trans-04 p-lr-25">
+                            Help & FAQs
+                        </a>
+                    </div>
+
+                    <div class="left-top-bar flex-w h-full">
+                        <a href="login.php" class="flex-c-m trans-04 p-lr-25">
+                            Log In
+                        </a>
+
+                        <a href="register.php" class="flex-c-m trans-04 p-lr-25">
+                            Register
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+
+                    <!-- Logo desktop -->
+                    <a href="index.php" class="logo">
+                        <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li>
+                                <a href="index.php">Home</a>
+                            </li>
+
+                            <li>
+                                <a href="catalogue.php">Catalogue</a>
+                            </li>
+
+                            <li class="label1" data-label1="hot">
+                                <a>Features</a>
+                                <ul class="sub-menu">
+                                    <li><a href="size-finder.html">Size Finder</a></li>
+                                    <li><a href="quiz.html">Vibe Checker</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="about.html">About</a>
+                            </li>
+
+                            <li>
+                                <a href="contact.php">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img src="images/icons/icon-close2.png" alt="CLOSE">
+                </button>
+
+                <form class="wrap-search-header flex-w p-l-15">
+                    <button class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" type="text" name="search" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <div class="faq-container">
+        <div class="container">
+            <div class="faq-header">
+                <h1>Frequently Asked Questions</h1>
+                <p>Have any questions? We got you!</p>
+            </div>
+
+            <div class="faq-category">
+                <div class="category-title">My Account</div>
+                <div class="questions-list">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        How do I update my personal information?
+                        <div class="answer">
+                            <p>To update your personal information:</p>
+                            <ol>
+                                <li>1. Log in to your account</li>
+                                <li>2. Click on "Account Settings" in the top right menu</li>
+                                <li>3. Edit any of your personal details</li>
+                                <li>4. Click "Save Changes" to update your information</li>
+                            </ol>
+                            <p>Note: Some information like your email address may require verification before changes
+                                are applied.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <div class="category-title">Orders</div>
+                <div class="questions-list">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        How can I track my order?
+                        <div class="answer">
+                            <p>You can track your order in several ways:</p>
+                            <ul>
+                                <li>- Use the tracking number sent to your email</li>
+                                <li>- Log in to your account and view "My Orders"</li>
+                                <li>- Contact our customer service with your order number</li>
+                            </ul>
+                            <p>Most orders are processed within 24 hours and shipping updates are provided every step of
+                                the way.</p>
+                        </div>
+                    </div>
+                    <div class="question" onclick="toggleAnswer(this)">
+                        How long does shipping take?
+                        <div class="answer">
+                            <p>Shipping times vary depending on your location:</p>
+                            <ul>
+                                <li>- Domestic orders: 2-5 business days</li>
+                                <li>- International orders: 7-14 business days</li>
+                                <li>- Express shipping: 1-3 business days (additional fee applies)</li>
+                            </ul>
+                            <p>During peak seasons, please allow additional processing time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <div class="category-title">Return and refunds</div>
+                <div class="questions-list">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        What do I do if an item from my delivery is missing or defective?
+                        <div class="answer">
+                            <p>Please contact us for assistance via email (WavelineAppSupport@gmail.com). Any damage or
+                                discrepancy must be reported to Waveline Apparel within 24 hours after receiving the
+                                order.
+                                We would require you to submit a clear photo of the damaged parts or packaging of the
+                                parcel to us within 24 hours in order to expedite the claims process.
+                                You will be required to return the damaged or defective items to the nearest courier
+                                branch using the Return Shipping Form provided.
+                        </div>
+                    </div>
+                    <div class="question" onclick="toggleAnswer(this)">
+                        How soon will I receive my refund?
+                        <div class="answer">
+                            <p>Refunds will be done via initial payment mode and may take up to 14 working days. Please
+                                note that refund amount is subject to the conditions of the products.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <div class="category-title">Payments</div>
+                <div class="questions-list">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        What payment methods can I use?
+                        <div class="answer">
+                            <p>Our websites accept credit cards and debit cards. However, fear not, our cashier in store
+                                accepts cash as well.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <div class="category-title">Coupons</div>
+                <div class="questions-list">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        How to use coupon?
+                        <div class="answer">
+                            <p>You can use your coupon by doing these steps:</p>
+                            <ol>
+                                <li>1. Proceed to your shopping cart</li>
+                                <li>2. Enter your coupon code to apply the coupon.</li>
+                                <li>3. Click on 'Apply Coupon' button before you proceed to checkout</li>
+                                <li>4. Now, you have successfully redeem the coupon.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <div class="category-title">Product Safety</div>
+                <div class="questions-list">
+                    <div class="question" onclick="toggleAnswer(this)">
+                        Are your products tested for safety?
+                        <div class="answer">
+                            <p>Yes, all our products undergo rigorous safety testing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        Categories
+                    </h4>
+
+                    <ul>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Women
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Men
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Kids
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Accessories
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        Location
+                    </h4>
+
+                    <ul>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Lot 23, Ground Floor,
+                                Paya Bunga Square,
+                                Jalan Engku Pengiran Anom 2,
+                                20300 Kuala Terengganu,
+                                Terengganu, Malaysia
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        CONTACT
+                    </h4>
+
+                    <ul>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Phone: +60 19-622 3456
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <p class="stext-107 cl7 size-201">
+                                Email: WavelineAppSupport@gmail.com
+                            </p>
+                        </li>
+
+                        <div class="p-t-27">
+                            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+
+                            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+
+                            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                                <i class="fa fa-pinterest-p"></i>
+                            </a>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        OPENING HOURS
+                    </h4>
+
+                    <p class="stext-107 cl7 size-201">
+                        10.00 a.m - 10.00 p.m everyday
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-t-40">
+                <div class="flex-c-m flex-w p-b-18">
+                    <a href="#" class="m-all-1">
+                        <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+                    </a>
+
+                    <a href="#" class="m-all-1">
+                        <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+                    </a>
+
+                    <a href="#" class="m-all-1">
+                        <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+                    </a>
+
+                    <a href="#" class="m-all-1">
+                        <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+                    </a>
+
+                    <a href="#" class="m-all-1">
+                        <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+                    </a>
+                </div>
+
+                <p class="stext-107 cl6 txt-center">
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i
+                        class="fa fa-heart-o" aria-hidden="true"></i> for CSC264 Group Project</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+        $('.gallery-lb').each(function () {
+            $(this).magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
+    <script>
+        // Toggle category expansion
+        const categoryTitles = document.querySelectorAll('.category-title');
+        categoryTitles.forEach(title => {
+            title.addEventListener('click', () => {
+                title.classList.toggle('active');
+                const questionsList = title.nextElementSibling;
+                if (questionsList.style.maxHeight) {
+                    questionsList.style.maxHeight = null;
+                    // Hide all answers when collapsing category
+                    const answers = questionsList.querySelectorAll('.answer');
+                    answers.forEach(answer => answer.classList.remove('show'));
+                } else {
+                    questionsList.style.maxHeight = questionsList.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Toggle answer visibility
+        function toggleAnswer(question) {
+            const answer = question.querySelector('.answer');
+            answer.classList.toggle('show');
+
+            // Adjust the container height when answer is shown/hidden
+            const questionsList = question.parentElement;
+            if (answer.classList.contains('show')) {
+                questionsList.style.maxHeight = questionsList.scrollHeight + answer.scrollHeight + 'px';
+            } else {
+                questionsList.style.maxHeight = questionsList.scrollHeight - answer.scrollHeight + 'px';
+            }
+        }
+    </script>
+</body>
+
+</html>
